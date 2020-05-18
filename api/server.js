@@ -1,9 +1,13 @@
-const express = require("express");
+const express = require('express');
+const helmet = require('helmet');
 
-const db = require("../data/dbConfig.js");
+const accountsRouter = require('../accounts/accounts-router.js');
 
 const server = express();
 
+server.use(helmet());
 server.use(express.json());
+
+server.use('/api/accounts', accountsRouter);
 
 module.exports = server;
